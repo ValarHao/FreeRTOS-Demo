@@ -84,7 +84,7 @@
 #define configMAX_TASK_NAME_LEN    ( 16 )                           /* 任务名字字符串长度 */
 #define configUSE_TRACE_FACILITY   0                                /* 启用可视化跟踪调试 */
 #define configUSE_16_BIT_TICKS     0                                /* 系统节拍计数器变量数据类型 */
-#define configIDLE_SHOULD_YIELD    1                                /* 空闲任务放弃CPU使用权给其他同优先级的用户任务 */
+#define configIDLE_SHOULD_YIELD    0                                /* 空闲任务放弃CPU使用权给其他同优先级的用户任务 */
 
 /*-----------------------------------------------------------
  *                FreeRTOS与协程有关的配置选项
@@ -120,12 +120,12 @@
 /*-----------------------------------------------------------
  *                FreeRTOS与中断服务函数有关的配置选项
  *----------------------------------------------------------*/
- #define vPortSVCHandler       SVC_Handler
- #define xPortPendSVHandler    PendSV_Handler
- #define xPortSysTickHandler   SysTick_Handler
+#define vPortSVCHandler       SVC_Handler
+#define xPortPendSVHandler    PendSV_Handler
+#define xPortSysTickHandler   SysTick_Handler
 
 /*-----------------------------------------------------------
- *                FreeRTOS断言
+ *                FreeRTOS与断言有关的配置选项
  *----------------------------------------------------------*/
 #define configASSERT( x )   if ( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }	
 
