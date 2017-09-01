@@ -127,6 +127,6 @@
 /*-----------------------------------------------------------
  *                FreeRTOS与断言有关的配置选项
  *----------------------------------------------------------*/
-#define configASSERT( x )   if ( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }	
+//#define configASSERT( x )   if ( ( x ) == 0 ) { taskDISABLE_INTERRUPTS(); for( ;; ); }	
 
 #endif /* FREERTOS_CONFIG_H */
