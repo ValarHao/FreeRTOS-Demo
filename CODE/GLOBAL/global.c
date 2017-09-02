@@ -8,7 +8,6 @@
 ****************************************************/
 #include "global.h"
 
-TaskHandle_t TaskStart_Handler = NULL;
 TaskHandle_t TaskLed_Handler = NULL;
 
 void InitGlobal(void)

@@ -10,35 +10,28 @@
 #include "global.h"
 #include "led.h"
 
-static void TaskStart(void *pvParameters);
+static void AppTaskCreate(void);
 
 int main(void)
 {
+	__set_PRIMASK(1);
+
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
 	sys.Init();
-	
-	xTaskCreate((TaskFunction_t) TaskStart,
-	            (const char *)  "TaskStart",
-	            (u16)            START_STK_SIZE,
-	            (void *)         NULL,
-	            (UBaseType_t)    START_TASK_PRIO,
-	            (TaskHandle_t *) &TaskStart_Handler );
+
+	AppTaskCreate();
 	
 	vTaskStartScheduler();
+
+	while (TRUE);
 }
 
-static void TaskStart(void *pvParameters)
+static void AppTaskCreate(void)
 {
-	taskENTER_CRITICAL();
-	
-	xTaskCreate((TaskFunction_t) TaskLed,
-	            (const char *)  "TaskLed",
-	            (u16)            LED_STK_SIZE,
-	            (void *)         NULL,
-	            (UBaseType_t)    LED_TASK_PRIO,
-				(TaskHandle_t *) &TaskLed_Handler );
-	
-	vTaskDelete(TaskStart_Handler);
-	
-	taskEXIT_CRITICAL();
+    xTaskCreate((TaskFunction_t) TaskLed,
+                (const char *)  "TaskLed",
+                (u16)            LED_STK_SIZE,
+                (void *)         NULL,
+                (UBaseType_t)    LED_TASK_PRIO,
+                (TaskHandle_t *) &TaskLed_Handler );
 }
