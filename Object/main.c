@@ -17,7 +17,6 @@ int main(void)
 	__set_PRIMASK(1);
 
 	NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);
-	sys.Init();
 
 	AppTaskCreate();
 	
@@ -28,10 +27,10 @@ int main(void)
 
 static void AppTaskCreate(void)
 {
-    xTaskCreate((TaskFunction_t) TaskLed,
-                (const char *)  "TaskLed",
-                (u16)            LED_STK_SIZE,
-                (void *)         NULL,
-                (UBaseType_t)    LED_TASK_PRIO,
-                (TaskHandle_t *) &TaskLed_Handler );
+    xTaskCreate( (TaskFunction_t) TaskLed,
+                 (const char *)  "TaskLed",
+                 (u16)            LED_STK_SIZE,
+                 (void *)         NULL,
+                 (UBaseType_t)    LED_TASK_PRIO,
+                 (TaskHandle_t *) &TaskLed_Handler );
 }

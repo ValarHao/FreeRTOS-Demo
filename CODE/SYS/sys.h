@@ -107,12 +107,7 @@
 
 #ifdef __STM32F10x_H
  #define   TICK_1US   (SYSCLK / 8)
-
- #ifndef FreeRTOS
-  #define   LOAD_VAL   TICK_1US * 1000
- #else
-  #define   LOAD_VAL   TICK_1US * configTICK_RATE_HZ
- #endif
+ #define   LOAD_VAL   TICK_1US * 1000
 #endif
 
 #ifdef __STM32F10x_H

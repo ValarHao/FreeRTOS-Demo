@@ -65,8 +65,6 @@ static void InitSysTick(void)
 static void DelayUs(u16 nus)
 {
   #ifdef __STM8S_H
-	DisableInterrupt();
-
 	__asm(
 	"PUSH A          \n"
 	"DELAY_XUS:      \n"
@@ -80,20 +78,12 @@ static void DelayUs(u16 nus)
 	"JRNE DELAY_XUS  \n"
 	"POP A           \n"
 	);
-
-	EnableInterrupt();
   #endif
 
   #ifdef __STM32F10x_H
 	u32 lastVal, nusVal, nowVal, usCnt = 0;
 
 	nusVal = (u32) nus * TICK_1US;
-
-   #ifndef FreeRTOS	
-	DisableInterrupt();
-   #else
-    taskENTER_CRITICAL();
-   #endif
 	
 	lastVal = SysTick->VAL;
 	
@@ -114,12 +104,6 @@ static void DelayUs(u16 nus)
 				break;
 		}
 	}
-	
-   #ifndef FreeRTOS
-	EnableInterrupt();
-   #else
-    taskEXIT_CRITICAL();
-   #endif
   #endif
 }
 
