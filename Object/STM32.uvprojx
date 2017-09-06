@@ -484,23 +484,18 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>FreeRTOS_CORE</GroupName>
+          <GroupName>FreeRTOS</GroupName>
           <Files>
-            <File>
-              <FileName>port.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\FreeRTOS\portable\ARM_CM3\port.c</FilePath>
-            </File>
             <File>
               <FileName>heap_4.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\FreeRTOS\portable\MemMang\heap_4.c</FilePath>
             </File>
-          </Files>
-        </Group>
-        <Group>
-          <GroupName>FreeRTOS_PORTABLE</GroupName>
-          <Files>
+            <File>
+              <FileName>port.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\FreeRTOS\portable\ARM_CM3\port.c</FilePath>
+            </File>
             <File>
               <FileName>croutine.c</FileName>
               <FileType>1</FileType>
